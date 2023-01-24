@@ -10,8 +10,17 @@ Model Converting Way: torch.jit.trace
 
 Android App Language: Kotlin
 
+
+
 =============================================
 
 This android app generates face images(1024*1024pixels).
 
 Warning: This app is not used coroutines. So When model initialze and compute, maybe this app stop.
+
+=============================================
+
+(1) Create Assets folder "Android-StyleGan-Kotlin/AndroidApp/app/src/main/assets/".
+(2) pretrainedModel_to_torchscript.py.
+(3) Open AndroidApp And Build, Run.
+
