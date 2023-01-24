@@ -8,7 +8,7 @@ resolution = 1024
 model = StyleGANGenerator(resolution)
 
 # weights and bias sets
-checkpoint_path = 'checkpoints/stylegan_ffhq1024.pth'
+checkpoint_path = 'stylegan_ffhq1024.pth'  #To get at https://github.com/genforce/genforce
 checkpoint = torch.load(checkpoint_path, map_location='cpu')
 model.load_state_dict(checkpoint['generator_smooth'])
 
