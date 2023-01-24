@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">pytorch stylegan</string>
+    <string name="image_view">image_view</string>
+    <string name="segment">segment</string>
+    <string name="run_model">Running the model...</string>
+    <string name="Start">Start</string>
+</resources>
