@@ -21,6 +21,9 @@ Warning: This app is not used coroutines. So When model initialze and compute, m
 
 =============================================
 
+How to
+
+
 (1) Create Assets folder "Android-StyleGan-Kotlin/AndroidApp/app/src/main/assets/".
 
 (2) pretrainedModel_to_torchscript.py.
