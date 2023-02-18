@@ -93,32 +93,41 @@ class MainActivity() : AppCompatActivity() {
         mProgressBar = findViewById(R.id.progressBar)
 
         buttonRestart.setOnClickListener {
-            buttonRestart.setEnabled(false)
-            mProgressBar.setVisibility(ProgressBar.VISIBLE)
-            try {
-                Log.d("TAG", "module start to cumpute ")
-                val output = module.forward(IValue.from(inputTensor))
+            buttonRestart.isEnabled = false
+            mProgressBar.visibility = ProgressBar.VISIBLE
 
-                // "getting tensor content as kotlin array of int32"
-                val outputTensor = output.toTensor()
-                val outputArray = outputTensor.dataAsIntArray
-                // end of "getting tensor content as kotlin array of int32"
-                mImageView.setImageBitmap(
-                    Bitmap.createBitmap(
-                        outputArray, 1024, 1024, Bitmap.Config.ARGB_8888
-                    )
-                )
-                Log.d("TAG", "module cumpute successfully")
+            // Launch a new coroutine on the default dispatcher
+            GlobalScope.launch(Dispatchers.Default) {
+                try {
+                    Log.d("TAG", "module start to cumpute ")
+                    val output = module.forward(IValue.from(inputTensor))
 
-            } catch (e: IOException) {
-                Log.e("ASLRecognition", "Error happened during computing ", e)
-                finish()
+                    // "getting tensor content as kotlin array of int32"
+                    val outputTensor = output.toTensor()
+                    val outputArray = outputTensor.dataAsIntArray
+                    // end of "getting tensor content as kotlin array of int32"
+
+                    // Update the UI on the main thread
+                    withContext(Dispatchers.Main) {
+                        mImageView.setImageBitmap(
+                            Bitmap.createBitmap(
+                                outputArray, 1024, 1024, Bitmap.Config.ARGB_8888
+                            )
+                        )
+                        Log.d("TAG", "module cumpute successfully")
+                    }
+                } catch (e: IOException) {
+                    Log.e("ASLRecognition", "Error happened during computing ", e)
+                    finish()
+                }
+
+                // Update the UI on the main thread
+                withContext(Dispatchers.Main) {
+                    buttonRestart.isEnabled = true
+                    mProgressBar.visibility = ProgressBar.INVISIBLE
+                }
             }
-
-
-            buttonRestart.setEnabled(true)
-            mProgressBar.setVisibility(ProgressBar.INVISIBLE)
-        }//buttonRestart.setOnClickListener
+        }
 
 
     }//onCreate
