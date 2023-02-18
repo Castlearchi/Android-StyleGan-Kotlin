@@ -15,9 +15,8 @@ Android App Language: Kotlin
 =============================================
 
 This android app generates face images(1024*1024pixels) and its time is about 3000ms in my enviroment.
-![image](https://user-images.githubusercontent.com/95863147/214266014-70cebc98-ddff-4266-858f-00f53a2290a9.png)
+![image](https://user-images.githubusercontent.com/95863147/214266014-70cebc98-ddff-4266-858f-00f53a2290a9.png = 50%)
 
-Warning: This app is not used coroutines. So When model initialze and compute, maybe this app stop.
 
 =============================================
 
