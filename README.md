@@ -15,8 +15,7 @@ Android App Language: Kotlin
 =============================================
 
 This android app generates face images(1024*1024pixels) and its time is about 3000ms in my enviroment.
-<img alt="image" src="https://github.com/Castlearchi/Android-StyleGan-Kotlin/blob/master/example_image.png" width="{300px}">
-
+<img alt="image" src="https://github.com/Castlearchi/Android-StyleGan-Kotlin/blob/master/example_image.png" width="30%" >
 
 =============================================
 
